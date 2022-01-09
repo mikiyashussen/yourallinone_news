@@ -7,17 +7,11 @@
     align-items: center;
     justify-content: center;
     background-color: rgb(249, 253, 253);
-   
+    -webkit-box-shadow: 4px 5px 15px 6px rgb(216 217 233);
+    -moz-box-shadow: 4px 5px 15px 6px rgb(216 217 233);
+    box-shadow: 4px 5px 15px 6px rgb(216 217 233);
+
 }
-
-/* .signInRow{
-
-     /* height: -webkit-fill-available; */
-     /* display: flex;
-     align-items: center;
-     justify-content: center;
-} */ 
-
 .slogan{
     height: 100%;
      width: 50%;
