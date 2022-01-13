@@ -1,15 +1,15 @@
 .signInContainer{
     height: 80vh;
-    /* border: 1px solid gray; */
+    border: 0.1px solid rgb(241, 237, 237);
     width: 80%;
     border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: rgb(249, 253, 253);
-    -webkit-box-shadow: 4px 5px 15px 6px rgb(216 217 233);
+    /* -webkit-box-shadow: 4px 5px 15px 6px rgb(216 217 233);
     -moz-box-shadow: 4px 5px 15px 6px rgb(216 217 233);
-    box-shadow: 4px 5px 15px 6px rgb(216 217 233);
+    box-shadow: 4px 5px 15px 6px rgb(216 217 233); */
 
 }
 .slogan{

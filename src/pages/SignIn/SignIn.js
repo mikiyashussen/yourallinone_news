@@ -7,9 +7,9 @@ import Col from 'react-bootstrap/Col'
 import CustomButton from '../../components/CustomButton/CustomButton';
 import CustomInput from '../../components/CustomInput/CustomInput';
 
-
-
 import './SingIn.css';
+
+// this shoudl use react hooks instead of states to store user inputs and send to the server
 const SignIn = () => {
     return (
         <div className='signInContainer'>

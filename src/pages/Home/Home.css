@@ -1,0 +1,41 @@
+.homeContainer{
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    font-size: small;
+
+}
+.allNewsContainer{
+    padding: 1em;
+}
+
+
+.singleNewsSiteContainer{
+    display: flex;
+    /* justify-content: center; */
+    margin: 1em;
+    /* border: 1px solid gray; */
+
+}
+
+.newsLogo{
+     background-size: cover;
+     background-repeat: no-repeat;
+     background-position: center;
+     /* margin-right: 1em; */
+     width: 30%;
+}
+
+.newsDetail{
+    background-color: rgb(255, 255, 255);
+    width: 70%;
+    padding-top: 1em;
+    /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+}
+.navBar{
+    /* height: 20em; */
+}
+
+li{
+    list-style: none;
+}

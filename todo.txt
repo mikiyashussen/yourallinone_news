@@ -1,0 +1,15 @@
+
+    /...... To dos ....../
+
+    1. home and favorites page front end
+
+    2. input gathering from user - username, email, password, newsList
+
+    3. api requests
+        - sign up
+        - sign in
+        - change favorites news list
+
+    // when some one visits website, on navbar log in &  sign up
+    // if log in   - send all news + fav news == [] - if not logged in
+    // maybe even the fav page doesn't show

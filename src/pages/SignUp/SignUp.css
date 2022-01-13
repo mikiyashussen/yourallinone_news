@@ -1,0 +1,55 @@
+.signInContainer {
+    height: 80vh;
+    border: 0.1px solid rgb(241, 237, 237);
+    width: 80%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(249, 253, 253);
+    /* -webkit-box-shadow: 4px 5px 15px 6px rgb(216 217 233);
+    -moz-box-shadow: 4px 5px 15px 6px rgb(216 217 233);
+    box-shadow: 4px 5px 15px 6px rgb(216 217 233); */
+
+}
+
+.slogan {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-image: linear-gradient(rgba(46, 43, 43, 0.7), rgba(54, 52, 52, 0.7)), url('../../assets/landingPageImg.jpg'); */
+    background-image:
+        url('../../assets/landingPageImg.jpg');
+    /* background-position: center; */
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #fff;
+    font-size: xx-large;
+}
+
+.inputFieldsContainer {
+    /* width: -webkit-fill-available; */
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    padding: 0 3em 0 3em;
+}
+
+
+.checkBoxesContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+}
+
+/* please text a look at css selectors */
+.checkBoxesContainer > div {
+    margin: 0 2em 0 0; 
+}
+

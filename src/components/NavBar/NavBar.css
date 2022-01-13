@@ -1,0 +1,19 @@
+.navBar {
+    font-size: larger;
+    background-color: rgb(16, 138, 138);
+    /* margin: 0; */
+    padding: 1em;
+    /* height: 10%; */
+    width: 100%;
+    /*  
+    margin for mobile and desktop is different higher for desktop */
+    margin-top: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: white;
+}
+
+.navBar>p {
+    margin: 0;
+}
