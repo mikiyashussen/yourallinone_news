@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 
- class CheckBox extends Component {
+import './CheckBox.css'
+
+class CheckBox extends Component {
 
     render() {
        const { news } = this.props;
@@ -8,12 +10,13 @@ import React, { Component } from 'react'
         return (
             <div>
                  <input type="checkbox"
+                        className="checkbox"
                         value={news}
                         key={news}
                         style={{ marignRight: '0.5em'}}
                     />
                 <label >
-                     News
+                     {news}
                 </label>
                
                

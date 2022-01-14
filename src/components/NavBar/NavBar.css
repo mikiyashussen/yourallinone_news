@@ -17,3 +17,9 @@
 .navBar>p {
     margin: 0;
 }
+
+.navBarButtonsContainer{
+    display: flex;
+    gap: 1em;
+    /* justify-content: ; */
+}
