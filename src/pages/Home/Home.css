@@ -1,9 +1,10 @@
 .homeContainer{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     height: 90%;
     font-size: small;
-
 }
 .allNewsContainer{
     padding: 1em;
@@ -29,7 +30,7 @@
 .newsDetail{
     background-color: rgb(255, 255, 255);
     width: 70%;
-    padding-top: 1em;
+    padding-top: 0.8em;
     /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
 }
 .navBar{

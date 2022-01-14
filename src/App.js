@@ -18,7 +18,7 @@ class App extends React.Component {
   constructor(){
     super()
     this.state = {
-      route: 'favoritesSelection',
+      route: 'sign up',
       allNews: {},
       favoritesNews: {},
       isUserLoggedIn: false
@@ -26,7 +26,7 @@ class App extends React.Component {
   }
 
   componentDidMount(){
-   const allNews =  news.get('/news');
+   const allNews =  news.get('/home');
    this.setState({allNews: allNews})
   }
 
@@ -51,11 +51,15 @@ class App extends React.Component {
       {/* <Home /> */}
       {
         this.state.route === 'sign in' ? (
+          <div className='signPagesContainer' >
           <SignIn changeRoute={this.changeRoute} /> 
+          </div>
         ) : 
         (
           this.state.route === 'sign up' ? (
-          <SignUp changeRoute={this.changeRoute}  />
+          <div className='signPagesContainer'>
+            <SignUp changeRoute={this.changeRoute}  />
+          </div>
           ) : 
           (
             this.state.route === 'home' ? (
@@ -66,7 +70,10 @@ class App extends React.Component {
             ) : (
               this.state.route === 'favorites' ? 
               (
-                <Favorites favoritesNews={this.state.favoritesNews} />
+                <div style={{width: '-webkit-fill-available'}}>
+                  <NavBar  route={true}/>
+                  <Favorites favoritesNews={this.state.favoritesNews} />                  
+                </div>
               ) 
               : (
                 this.state.route === 'favoritesSelection' ? 

@@ -7,7 +7,7 @@
     width: 100%;
     /*  
     margin for mobile and desktop is different higher for desktop */
-    margin-top: 2em;
+    /* margin-top: 2em; */
     display: flex;
     align-items: center;
     justify-content: space-evenly;

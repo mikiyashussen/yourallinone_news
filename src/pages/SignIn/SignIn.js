@@ -32,7 +32,7 @@ class SignIn extends React.Component{
         this.props.changeRoute('sign up')
         console.log('clicked')
         // make the api request here
-        const isCredentialsValid = await news.post('news',{
+        const isCredentialsValid = await news.post('signin',{
             data: this.state
         })
         // console.log(isCredentialsValid);

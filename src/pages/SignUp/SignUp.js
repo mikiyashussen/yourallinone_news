@@ -35,14 +35,15 @@ constructor(){
    
     onSignUp = async () => {
         console.log('clicked')
-        this.props.changeRoute('sign in')
+        // this.props.changeRoute('sign in')
         // make the api request here and route to home page
-        const isCredentialsValid = await news.post('news',{
+        const isCredentialsValid = await news.post('signup',{
             data: this.state
         })
         // console.log(isCredentialsValid);
         if(isCredentialsValid){
-            this.props.changeRoute('home')
+            console.log('sign up response',isCredentialsValid)
+            this.props.changeRoute('favoritesSelection')
         }
         else {
             // display on Screen

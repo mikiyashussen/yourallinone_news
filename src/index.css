@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* height: 100vh; */
+    /* height: 100vh; */
     /* text-align: center; */
     background-color: #334143;
 
@@ -15,11 +15,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
       /* text-align: center; */
-      background-color: #334143;
+      /* background-color: #334143; */
 
 }
 
 .root{
-      background-color: #334143;
-  overflow-y: scroll;
+      /* background-color: #334143; */
+      height: inherit;
+      /* overflow-y: scroll; */
 }

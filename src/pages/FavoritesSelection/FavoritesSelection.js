@@ -33,12 +33,13 @@ class FavoritesSelection extends React.Component {
 
     onBtnClick = async () => {
         //sends newslist and username to server
-        // const favNews = news.post('/changeFavoriteList');
-        const favNews = {}
+        const favNews = await news.post('/changefavorites');
+        // const favNews = {}
         // sever replies with newslist
         // send to favorite and routes to favorite ? HOW???
-        console.log('clicked')
-        this.props.changeFavorites('favorites', favNews.data)
+        console.log('favorites selection', favNews)
+
+        this.props.changeFavorites('favorites', favNews)
     }
 
     render(){
