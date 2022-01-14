@@ -6,25 +6,32 @@ import Home from './pages/Home/Home'
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
 import NavBar from './components/NavBar/NavBar';
+import FavoritesSelection from './pages/FavoritesSelection/FavoritesSelection';
 import Favorites from './pages/Favorites/Favorites';
 
 import news from './apis/news';
 
 import './App.css';
-import { alignPropType } from 'react-bootstrap/esm/types';
+// import { alignPropType } from 'react-bootstrap/esm/types';
 
 class App extends React.Component {
   constructor(){
     super()
     this.state = {
-      route: 'favorites',
-      allNews: {}
+      route: 'favoritesSelection',
+      allNews: {},
+      favoritesNews: {},
+      isUserLoggedIn: false
     }
   }
 
   componentDidMount(){
    const allNews =  news.get('/news');
    this.setState({allNews: allNews})
+  }
+
+  changeFavorites = (route, favNews) => {
+    this.setState({route: route, favoritesNews: favNews})
   }
 
   changeRoute = (route) => {
@@ -46,11 +53,26 @@ class App extends React.Component {
         this.state.route === 'sign in' ? (
           <SignIn changeRoute={this.changeRoute} /> 
         ) : 
-        (this.state.route === 'sign up' ? (
+        (
+          this.state.route === 'sign up' ? (
           <SignUp changeRoute={this.changeRoute}  />
           ) : 
           (
-            this.state.route === 'home' ? ( <Home />) : (<Favorites />)
+            this.state.route === 'home' ? (
+              <div>
+                <NavBar  route={true}/>
+                <Home />
+              </div> 
+            ) : (
+              this.state.route === 'favorites' ? 
+              (
+                <Favorites favoritesNews={this.state.favoritesNews} />
+              ) 
+              : (
+                this.state.route === 'favoritesSelection' ? 
+                <FavoritesSelection changeFavorites={this.changeFavorites} /> :
+                'Loading .............')
+            )
           )
         )
       }
@@ -71,7 +93,7 @@ class App extends React.Component {
     
     5 architect API requests - done
 
-    6. Implement favorites page
+    6. Implement favoritesSelection page
   
   */
 }
