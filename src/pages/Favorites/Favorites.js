@@ -36,6 +36,7 @@ class Favorites extends React.Component {
     render(){
         return(
              <div className='homeContainer'>
+                 {/* <CustomButton buttonText='change favorites list'/> */}
                <div className='allNewsContainer'>
                    {
                        news.map((news,index) => {

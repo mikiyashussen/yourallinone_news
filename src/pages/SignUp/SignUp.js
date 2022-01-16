@@ -43,7 +43,7 @@ constructor(){
         // console.log(isCredentialsValid);
         if(isCredentialsValid){
             console.log('sign up response',isCredentialsValid)
-            this.props.changeRoute('favoritesSelection')
+            this.props.changeRoute('favoritesSelection', true)
         }
         else {
             // display on Screen

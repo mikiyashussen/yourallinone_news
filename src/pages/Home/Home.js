@@ -97,6 +97,7 @@ class Home extends React.Component {
                <CustomButton buttonText='button' /> */}
                <div className='allNewsContainer'>
                    {
+                       // 5 times loop
                        news.map((news,index) => {
                            return(
                             ((index % 2) === 0) ? 
@@ -105,6 +106,7 @@ class Home extends React.Component {
                                  style={{backgroundImage: `url(${logos[index]})`}}></div>
                                 <div className='newsDetail'>
                                     {
+                                        // inside each news
                                         news.data.map((news,index) => {
                                             return (
                                                 <ul>

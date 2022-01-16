@@ -3,7 +3,13 @@ import CustomButton from '../CustomButton/CustomButton';
 import "./NavBar.css";
 
 
-const NavBar = ({route}) => {
+const NavBar = ({route, onNavBarBtnsClick}) => {
+
+    const onBtnClick = (event) => {
+        let value = event.target.innerHTML.toLowerCase()
+        console.log(value.toLowerCase())
+        onNavBarBtnsClick(value)
+    }
     return (
         <div className='navBar'>
             <p>Your-All-in-one-News</p>
@@ -11,16 +17,16 @@ const NavBar = ({route}) => {
                {
                    route === true ? (
                        <div className='navBarButtonsContainer'>
-                            <CustomButton buttonColor='#1AD04D' buttonText='Home' />
-                            <CustomButton buttonColor='#000000' buttonText='Favorites' />
-                            <CustomButton buttonColor='#1AD04D' buttonText='Sign Out' />
+                            <CustomButton onBtnClick={onBtnClick} buttonColor='#1AD04D' buttonText='Home' />
+                            <CustomButton onBtnClick={onBtnClick} buttonColor='#000000' buttonText='Favorites' />
+                            <CustomButton onBtnClick={onBtnClick} buttonColor='#1AD04D' buttonText='Sign Out' />
                        </div>
                    ) :
                    (
                        
                        <div className='navBarButtonsContainer'>
-                            <CustomButton buttonColor='#1AD04D' buttonText='Sign In' />
-                            <CustomButton buttonColor='#1AD04D' buttonText='Sign Up' />
+                            <CustomButton onBtnClick={onBtnClick} buttonColor='#1AD04D' buttonText='Sign In' />
+                            <CustomButton onBtnClick={onBtnClick} buttonColor='#1AD04D' buttonText='Sign Up' />
                        </div>
                    )
                }

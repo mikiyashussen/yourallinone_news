@@ -37,7 +37,7 @@ class SignIn extends React.Component{
         })
         // console.log(isCredentialsValid);
         if(isCredentialsValid){
-            this.props.changeRoute('home')
+            this.props.changeRoute('favorites', true)
         }
         else {
             // display on Screen

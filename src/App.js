@@ -21,7 +21,8 @@ class App extends React.Component {
       route: 'sign up',
       allNews: {},
       favoritesNews: {},
-      isUserLoggedIn: false
+      isUserLoggedIn: false,
+      loggedInUser: ''
     }
   }
 
@@ -30,12 +31,32 @@ class App extends React.Component {
    this.setState({allNews: allNews})
   }
 
+  onNavBarBtnsClick = async (btnCliked) => {
+    console.log('btn app', btnCliked)
+    if(btnCliked === 'home'){
+      const allNews = await news.post('/changefavorites');
+      this.setState({allNews: allNews, route: 'home'})
+    }
+    else if(btnCliked === 'favorites'){
+      const allNews = await news.post('/favorites', {
+        loggedInUser: this.state.loggedInUser
+      });
+      console.log(allNews)
+      this.setState({allNews: allNews, route: 'favorites'})
+    }
+    else if(btnCliked === 'sign out'){
+      const allNews = await news.get('/home');
+      this.setState({allNews: allNews, route: 'home'})
+    }
+   
+  }
+
   changeFavorites = (route, favNews) => {
     this.setState({route: route, favoritesNews: favNews})
   }
 
-  changeRoute = (route) => {
-    this.setState({route: route})
+  changeRoute = (route, isUserLoggedIn) => {
+    this.setState({route: route, isUserLoggedIn: isUserLoggedIn})
   }
   render(){
     return (
@@ -64,14 +85,14 @@ class App extends React.Component {
           (
             this.state.route === 'home' ? (
               <div>
-                <NavBar  route={true}/>
+                <NavBar onNavBarBtnsClick={this.onNavBarBtnsClick} route={this.state.isUserLoggedIn}/>
                 <Home />
               </div> 
             ) : (
               this.state.route === 'favorites' ? 
               (
                 <div style={{width: '-webkit-fill-available'}}>
-                  <NavBar  route={true}/>
+                  <NavBar onNavBarBtnsClick={this.onNavBarBtnsClick}  route={this.state.isUserLoggedIn}/>
                   <Favorites favoritesNews={this.state.favoritesNews} />                  
                 </div>
               ) 
@@ -89,7 +110,7 @@ class App extends React.Component {
   
   /*  above all don't forget to push code to GITHUB
     1. think about and experiment on the box-shadow a little more, 
-    maybe less from the right side
+    maybe less from the right side - done
     
     2. finish the sign up page and figure out how to do the radio buttons as well, 
     less width to text inputs and buttons might be better
@@ -102,6 +123,13 @@ class App extends React.Component {
 
     6. Implement favoritesSelection page
   
+  */
+  /* 
+    1. collect data from radio buttons
+
+    2. center the sign in and up pages
+
+    3. putting the change button inside favorites
   */
 }
 
