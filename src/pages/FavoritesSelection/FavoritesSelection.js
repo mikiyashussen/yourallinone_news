@@ -17,10 +17,10 @@ const items = [
   'BBC'
 ];
 
+const newsList = []
+
  // create check boxes
-const createCheckBoxes = (item) => {
-    return <CheckBox  news={item} />
-}
+// const 
 
 class FavoritesSelection extends React.Component {
 
@@ -30,10 +30,38 @@ class FavoritesSelection extends React.Component {
             favoriteNews: []
         }
     }
+    createCheckBoxes = (item) => {
+    return <CheckBox onBoxClick={this.onBoxClick}  news={item} />
+    }
+
+    onBoxClick = (event) => {
+        console.log(event.target)
+        const value = event.target.value
+        if(newsList.length == 0){
+            newsList.push(event.target.value)
+            // this.setState({favoriteNews: newsList})
+            console.log('length 0', newsList)
+        }
+        else {
+            if(newsList.includes(value)){
+                newsList.splice(newsList.indexOf(value), 1)
+                console.log('after removing duplicates', newsList)
+            }
+            else {
+                 newsList.push(value)
+                  console.log('full list', newsList)
+            }
+        }
+        this.setState({favoriteNews: newsList})
+        console.log('all values', this.state.favoriteNews)
+    }
 
     onBtnClick = async () => {
         //sends newslist and username to server
-        const favNews = await news.post('/changefavorites');
+        console.log(this.state.favoriteNews)
+        const favNews = await news.post('/changefavorites', {
+            favNews: this.state.favoriteNews
+        });
         // const favNews = {}
         // sever replies with newslist
         // send to favorite and routes to favorite ? HOW???
@@ -48,7 +76,7 @@ class FavoritesSelection extends React.Component {
             <h4 style={{textAlign: 'center'}}>Select you favorites news ...</h4>
             <div className="checkBoxesContainer">
                 {items.map(item => {
-                    return createCheckBoxes(item)
+                    return this.createCheckBoxes(item)
                 })}
             </div>
             <CustomButton buttonText='Change' onBtnClick={this.onBtnClick}/>

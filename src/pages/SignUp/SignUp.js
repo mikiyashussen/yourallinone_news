@@ -37,9 +37,10 @@ constructor(){
         console.log('clicked')
         // this.props.changeRoute('sign in')
         // make the api request here and route to home page
-        const isCredentialsValid = await news.post('signup',{
+        const isCredentialsValid = await news.post('home',{
             data: this.state
         })
+        console.log('data from django', isCredentialsValid)
         // console.log(isCredentialsValid);
         if(isCredentialsValid){
             console.log('sign up response',isCredentialsValid)
