@@ -1,9 +1,13 @@
 import React from 'react'
 import bbc from '../../assets/bbc.png';
 import techCrunch from '../../assets/techCrunch.jpg';
+import firstNews from '../../assets/firstNews.jpg';
+import gizmodo from '../../assets/gizmodo.jpg';
+import skySport from '../../assets/skySport.jpg';
+
 import CustomButton from '../../components/CustomButton/CustomButton';
 
-const logos = [bbc, techCrunch, bbc,techCrunch, bbc]
+const logos = [bbc, firstNews, gizmodo,skySport, techCrunch]
 // const news = [
 //  {
 //     newsName: 'Tech Crunch',

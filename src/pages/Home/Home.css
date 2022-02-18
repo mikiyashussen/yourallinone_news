@@ -18,6 +18,13 @@
     /* border: 1px solid gray; */
 
 }
+.singleNewsSiteContainer2 {
+    display: flex;
+    /* justify-content: center; */
+    margin: 1em;
+    /* border: 1px solid gray; */
+
+}
 
 .newsLogo{
      background-size: cover;

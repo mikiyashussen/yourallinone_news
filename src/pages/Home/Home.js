@@ -4,9 +4,13 @@ import './Home.css'
 
 import bbc from '../../assets/bbc.png';
 import techCrunch from '../../assets/techCrunch.jpg';
+import firstNews from '../../assets/firstNews.jpg';
+import gizmodo from '../../assets/gizmodo.jpg';
+import skySport from '../../assets/skySport.jpg';
+
 // import CustomButton from '../../components/CustomButton/CustomButton';
 
-const logos = [bbc, bbc, bbc,bbc, bbc]
+const logos = [bbc, firstNews, gizmodo,skySport, techCrunch]
 // const news = [
 //     {
 //     newsName: 'sky sports',
@@ -110,7 +114,7 @@ class Home extends React.Component {
                                      {console.log('inhere', index)}
                                       <div className='newsLogo'
                                         style={{backgroundImage: `url(${logos[index]})`}}></div>
-                                        <div className='newsDetail'>
+                                        <div className='newsDetail' style={{ marignRight: '1em'}}>
                                             {   
                                                 item.map((singleNews,index) => {
                                                     return(
@@ -129,14 +133,15 @@ class Home extends React.Component {
                             ) 
                             : 
                             (
-                                <div className='singlesingleNewsSiteContainer'>
+                                <div className='singlesingleNewsSiteContainer2' style={{display: 'flex'}}>
                                      {console.log('outttt', index)}
-                                    <div className='newsDetail'>
+                                     
+                                    <div className='newsDetail' style={{ marignLeft: '1em'}}>
                                         {
                                             item.map((singleNews,index) => {
                                                 return (
                                                     <ul>
-                                                        <li><span style={{ marignRight: '1em'}}>
+                                                        <li><span >
                                                             {index + 1}.</span>
                                                             {singleNews.detail}</li>
                                                     </ul>
@@ -145,7 +150,7 @@ class Home extends React.Component {
                                         }
                                     </div>
                                      <div className='newsLogo'
-                                    style={{backgroundImage: `url(${logos[index]})`}}></div>
+                                        style={{backgroundImage: `url(${logos[index]})`}}></div>
                             </div>
                             )
                            )
