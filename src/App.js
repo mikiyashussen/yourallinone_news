@@ -18,45 +18,71 @@ class App extends React.Component {
   constructor(){
     super()
     this.state = {
-      route: 'sign up',
-      allNews: {},
+      route: 'home',
+      allNews: '',
       favoritesNews: {},
       isUserLoggedIn: false,
-      loggedInUser: ''
+      loggedInUser: '',
+      username: ''
     }
   }
 
   componentDidMount(){
-   const allNews =  news.get('/home');
-   this.setState({allNews: allNews})
+     news.get('/django/home')
+   .then(res =>
+    {console.log(res)
+    this.setState({allNews: res.data})})
   }
 
   onNavBarBtnsClick = async (btnCliked) => {
     console.log('btn app', btnCliked)
     if(btnCliked === 'home'){
-      const allNews = await news.post('/changefavorites');
-      this.setState({allNews: allNews, route: 'home'})
+      // const allNews = await 
+      news.get('/django/home')
+      .then(res => {
+         this.setState({allNews: res.data, route: 'home'})
+      // this.setState({route: 'home'})
+      })
+     
     }
     else if(btnCliked === 'favorites'){
-      const allNews = await news.post('/favorites', {
-        loggedInUser: this.state.loggedInUser
-      });
-      console.log(allNews)
-      this.setState({allNews: allNews, route: 'favorites'})
+      // const allNews = await 
+      console.log('fav BTN',this.state)
+        news.post('/django/login/', {
+        username: this.state.username,
+        password: this.state.password
+      }).then(res=> {
+         console.log(res)
+          this.setState({favoritesNews: res.data, route: 'favorites'})
+      })
+     
     }
     else if(btnCliked === 'sign out'){
-      const allNews = await news.get('/home');
-      this.setState({allNews: allNews, route: 'home'})
+      // const allNews = await 
+      news.get('/django/home').
+      then(res => {
+        this.setState({allNews: res.data, route: 'home', isUserLoggedIn: false})
+      })
+    }
+    else if(btnCliked === 'sign in'){
+      this.setState({ route: 'sign in'})
+    }
+    else if(btnCliked === 'sign up'){
+      this.setState({ route: 'sign up'})
     }
    
+  }
+
+  changeBetweenLoginSignup =  (route) => {
+    this.setState({route: route})
   }
 
   changeFavorites = (route, favNews) => {
     this.setState({route: route, favoritesNews: favNews})
   }
 
-  changeRoute = (route, isUserLoggedIn) => {
-    this.setState({route: route, isUserLoggedIn: isUserLoggedIn})
+  changeRoute = (route, isUserLoggedIn, username, password, favNews) => {
+    this.setState({route: route, isUserLoggedIn: true, username: username, password: password, favoritesNews: favNews})
   }
   render(){
     return (
@@ -73,32 +99,32 @@ class App extends React.Component {
       {
         this.state.route === 'sign in' ? (
           <div className='signPagesContainer' >
-          <SignIn changeRoute={this.changeRoute} /> 
+          <SignIn changeBetweenLoginSignup={this.changeBetweenLoginSignup} changeRoute={this.changeRoute} /> 
           </div>
         ) : 
         (
           this.state.route === 'sign up' ? (
           <div className='signPagesContainer'>
-            <SignUp changeRoute={this.changeRoute}  />
+            <SignUp changeBetweenLoginSignup={this.changeBetweenLoginSignup} changeRoute={this.changeRoute}  />
           </div>
           ) : 
           (
             this.state.route === 'home' ? (
               <div>
-                <NavBar onNavBarBtnsClick={this.onNavBarBtnsClick} route={this.state.isUserLoggedIn}/>
-                <Home />
+                <NavBar onNavBarBtnsClick={this.onNavBarBtnsClick} route={this.state.route} isUserLoggedIn={this.state.isUserLoggedIn}/>
+                <Home news={this.state.allNews}/>
               </div> 
             ) : (
               this.state.route === 'favorites' ? 
               (
                 <div style={{width: '-webkit-fill-available'}}>
-                  <NavBar onNavBarBtnsClick={this.onNavBarBtnsClick}  route={this.state.isUserLoggedIn}/>
-                  <Favorites favoritesNews={this.state.favoritesNews} />                  
+                  <NavBar onNavBarBtnsClick={this.onNavBarBtnsClick}  isUserLoggedIn={this.state.isUserLoggedIn}/>
+                  <Favorites favoritesNews={this.state.favoritesNews}  />                  
                 </div>
               ) 
               : (
                 this.state.route === 'favoritesSelection' ? 
-                <FavoritesSelection changeFavorites={this.changeFavorites} /> :
+                <FavoritesSelection changeFavorites={this.changeFavorites} username={this.state.username} /> :
                 'Loading .............')
             )
           )

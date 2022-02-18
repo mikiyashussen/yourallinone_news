@@ -9,12 +9,11 @@ import CustomButton from '../../components/CustomButton/CustomButton';
 import './FavoritesSelection.css'
 
 const items = [
-  'TVN',
-  'HackerNews',
-  'Tech Crunch',
-  'SkySports',
-  'Gizmodo',
-  'BBC'
+  'first_news',
+  'sky_sport',
+  'tech_crunch',
+  'gizmodo',
+  'bbc'
 ];
 
 const newsList = []
@@ -56,18 +55,31 @@ class FavoritesSelection extends React.Component {
         console.log('all values', this.state.favoriteNews)
     }
 
-    onBtnClick = async () => {
+    onBtnClick =  () => {
         //sends newslist and username to server
+        console.log('favorites selection', this.state.favoriteNews)
         console.log(this.state.favoriteNews)
-        const favNews = await news.post('/changefavorites', {
-            favNews: this.state.favoriteNews
+        console.log(this.props.username)
+
+        //const favNews = await 
+        news.post('/django/favorite/', {
+            news_choice: this.state.favoriteNews,
+            username: this.props.username
+        }).then(res=> {
+            console.log('favorites selection', res)
+            this.props.changeFavorites('favorites', res.data)
+        })
+        .catch(function (error) {
+            // this.setState({isCredentialsValid: false})
+            console.log(error);
+            // console.log('Invalid credentials')
         });
         // const favNews = {}
         // sever replies with newslist
         // send to favorite and routes to favorite ? HOW???
-        console.log('favorites selection', favNews)
+        // console.log('favorites selection', favNews)
 
-        this.props.changeFavorites('favorites', favNews)
+        
     }
 
     render(){

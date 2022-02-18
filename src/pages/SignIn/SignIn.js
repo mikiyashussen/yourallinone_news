@@ -28,21 +28,28 @@ class SignIn extends React.Component{
         console.log('SIGN IN',this.state);
     }
    
-    onSignIn = async () => {
-        this.props.changeRoute('sign up')
+    onSignIn =  () => {
+        // this.props.changeRoute('sign up')
         console.log('clicked')
+        console.log(this.state)
+
         // make the api request here
-        const isCredentialsValid = await news.post('signin',{
-            data: this.state
+        // const isCredentialsValid = await
+        news.post('/django/login/',{
+            username: this.state.username,
+            password: this.state.password
+        }).then(res => {
+             this.props.changeRoute('favorites', true,  this.state.username, this.state.password, res.data)
+           console.log(res);
         })
         // console.log(isCredentialsValid);
-        if(isCredentialsValid){
-            this.props.changeRoute('favorites', true)
-        }
-        else {
-            // display on Screen
-            console.log('Invalid credentials')
-        }
+        // if(isCredentialsValid){
+        //     this.props.changeRoute('favorites', true)
+        // }
+        // else {
+        //     // display on Screen
+        //     console.log('Invalid credentials')
+        // }
     } 
 
     render(){
@@ -57,7 +64,7 @@ class SignIn extends React.Component{
                 <CustomInput  inputText='Username' id='username' valuesFromUser={this.valuesFromUser}/>
                 <CustomInput inputText='Password' id='password' valuesFromUser={this.valuesFromUser}/>
                 <CustomButton buttonText='Sign In' onBtnClick={this.onSignIn}/>
-                <div> or <a href='www.google.com'>sign up</a></div>
+                <div > or <a style={{color: 'blue', cursor: 'pointer', borderBottom: '1px solid blue'}} onClick={()=> this.props.changeBetweenLoginSignup('sign up')}>sign up</a></div>
             </div>
         </div>
     )

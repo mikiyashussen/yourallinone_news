@@ -4,42 +4,51 @@ import techCrunch from '../../assets/techCrunch.jpg';
 import CustomButton from '../../components/CustomButton/CustomButton';
 
 const logos = [bbc, techCrunch, bbc,techCrunch, bbc]
-const news = [
- {
-    newsName: 'Tech Crunch',
-    data: [
-          {
-              title: 'title',
-        description: 'loreem ipsum sdfnjlsdfn,asqdjwf lskdasdasd dasjdlnkasdas'
-    },
-    {
-          title: 'title',
-        description: 'loreem ipsum sdfnjlsdfn,asqdjwf lskdasdasd dasjdlnkasdas'
-    },
-    {
-          title: 'title',
-        description: 'loreem ipsum sdfnjlsdfn,asqdjwf lskdasdasd dasjdlnkasdas'
-    },
-    {
-          title: 'title',
-        description: 'loreem ipsum sdfnjlsdfn,asqdjwf lskdasdasd dasjdlnkasdas'
-    },
-    {
-          title: 'title',
-        description: 'loreem ipsum sdfnjlsdfn,asqdjwf lskdasdasd dasjdlnkasdas'
-    }
-    ]
-}
-]
+// const news = [
+//  {
+//     newsName: 'Tech Crunch',
+//     data: [
+//           {
+//               title: 'title',
+//         description: 'loreem ipsum sdfnjlsdfn,asqdjwf lskdasdasd dasjdlnkasdas'
+//     },
+//     {
+//           title: 'title',
+//         description: 'loreem ipsum sdfnjlsdfn,asqdjwf lskdasdasd dasjdlnkasdas'
+//     },
+//     {
+//           title: 'title',
+//         description: 'loreem ipsum sdfnjlsdfn,asqdjwf lskdasdasd dasjdlnkasdas'
+//     },
+//     {
+//           title: 'title',
+//         description: 'loreem ipsum sdfnjlsdfn,asqdjwf lskdasdasd dasjdlnkasdas'
+//     },
+//     {
+//           title: 'title',
+//         description: 'loreem ipsum sdfnjlsdfn,asqdjwf lskdasdasd dasjdlnkasdas'
+//     }
+//     ]
+// }
+// ]
+let news = [];
 class Favorites extends React.Component {
-
+    list = () => {
+         news = [];
+        console.log('fav news', this.props.favoritesNews)
+            for(const item in this.props.favoritesNews){
+                news.push(this.props.favoritesNews[item])
+            }
+            console.log(news)
+        }
     render(){
         return(
              <div className='homeContainer'>
                  {/* <CustomButton buttonText='change favorites list'/> */}
+                 {this.list()}
                <div className='allNewsContainer'>
                    {
-                       news.map((news,index) => {
+                       news.map((item,index) => {
                            return(
                             ((index % 2) === 0) ? 
                             ( <div className='singleNewsSiteContainer'>
@@ -47,12 +56,13 @@ class Favorites extends React.Component {
                                  style={{backgroundImage: `url(${logos[index]})`}}></div>
                                 <div className='newsDetail'>
                                     {
-                                        news.data.map((news,index) => {
+                                        item.map((singleNews,index) => {
                                             return (
                                                 <ul>
                                                     <li><span style={{ marignRight: '1em'}}>
                                                         {index + 1}.</span>
-                                                        {news.description}</li>
+                                                        {(singleNews.detail == '' || singleNews.detail == null) ? (<a href={singleNews.title_link}>{singleNews.title}</a>) : (<p>{singleNews.detail}</p>)}
+                                                        </li>
                                                 </ul>
                                             )
                                         })
@@ -63,12 +73,13 @@ class Favorites extends React.Component {
                                 <div className='singleNewsSiteContainer'>
                                     <div className='newsDetail'>
                                         {
-                                            news.data.map((news,index) => {
+                                            item.map((singleNews,index) => {
                                                 return (
                                                     <ul>
                                                         <li><span style={{ marignRight: '1em'}}>
                                                             {index + 1}.</span>
-                                                            {news.description}</li>
+                                                            {(singleNews.detail == '' || singleNews.detail == null) ? (<a href={singleNews.title_link}>{singleNews.title}</a>) : (<p>{singleNews.detail}</p>)}
+                                                           </li>
                                                     </ul>
                                                 )
                                             })
