@@ -62,7 +62,7 @@ class FavoritesSelection extends React.Component {
         console.log(this.props.username)
 
         //const favNews = await 
-        news.post('/django/favorite/', {
+        news.post('/favorites/', {
             news_choice: this.state.favoriteNews,
             username: this.props.username
         }).then(res=> {

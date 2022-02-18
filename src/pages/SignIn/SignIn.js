@@ -35,7 +35,9 @@ class SignIn extends React.Component{
 
         // make the api request here
         // const isCredentialsValid = await
-        news.post('/django/login/',{
+        // news.post('/django/login/',{
+        news.post('/signin/',{
+
             username: this.state.username,
             password: this.state.password
         }).then(res => {

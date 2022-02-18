@@ -39,7 +39,7 @@ constructor(){
         // this.props.changeRoute('sign in')
         // make the api request here and route to home page
         // const isCredentialsValid = await 
-        news.post('/django/signup/',{
+        news.post('/signup/',{
             email: this.state.email,
             username: this.state.username,
             password: this.state.password,

@@ -28,8 +28,8 @@ class App extends React.Component {
   }
 
   componentDidMount(){
-     news.get('/django/home')
-   .then(res =>
+     news.get('/home')
+    .then(res =>
     {console.log(res)
     this.setState({allNews: res.data})})
   }
@@ -38,7 +38,7 @@ class App extends React.Component {
     console.log('btn app', btnCliked)
     if(btnCliked === 'home'){
       // const allNews = await 
-      news.get('/django/home')
+      news.get('/home')
       .then(res => {
          this.setState({allNews: res.data, route: 'home'})
       // this.setState({route: 'home'})
@@ -48,7 +48,7 @@ class App extends React.Component {
     else if(btnCliked === 'favorites'){
       // const allNews = await 
       console.log('fav BTN',this.state)
-        news.post('/django/login/', {
+        news.post('/signin/', {
         username: this.state.username,
         password: this.state.password
       }).then(res=> {
@@ -59,7 +59,7 @@ class App extends React.Component {
     }
     else if(btnCliked === 'sign out'){
       // const allNews = await 
-      news.get('/django/home').
+      news.get('/home').
       then(res => {
         this.setState({allNews: res.data, route: 'home', isUserLoggedIn: false})
       })
